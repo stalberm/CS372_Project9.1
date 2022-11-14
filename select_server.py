@@ -13,10 +13,11 @@ def handle_listener(ready_socket, read_set):
 
 def handle_standard(ready_socket, read_set):
     request = ready_socket.recv(4096)
-    print(f"{ready_socket.getpeername()} {len(request)} bytes: {request}")
     if (len(request) == 0):
         read_set.remove(ready_socket)
         print(f"{ready_socket.getpeername()}: disconnected")
+    else:
+        print(f"{ready_socket.getpeername()} {len(request)} bytes: {request}")
 
 def run_server(port):
 
